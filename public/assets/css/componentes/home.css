@@ -1,0 +1,85 @@
+.titulo-et{
+    color: #1abcbc;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .home-et {
+    background-color: #f7f7f7;
+    width: 80%;
+    padding: 40px;
+    margin: 50px auto;
+    border-radius: 20px;
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .links{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  }
+  
+  .link-et {
+    width: 320px;
+    padding: 20px 30px;
+    height: 220px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    flex-direction: column;
+    background-color: #1abcbc;
+    font-family: "Oswald", sans-serif;
+    font-weight: bold;
+    color: white;
+    font-size: 18px;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.342);
+  }
+  
+  .link-et:hover {
+    transform: translateY(-10px);
+  }
+  
+  .link-et i {
+    font-size: 50px;
+    margin-bottom: 15px;
+    color: #ecf0f1;
+  }
+  
+  .link-et h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .status {
+    padding: 5px 15px;
+    border-radius: 12px;
+    font-size: 14px;
+    margin-top: 10px;
+    font-weight: normal;
+  }
+  
+  .status-liberado {
+    background-color: #2ecc71;
+    color: white;
+  }
+  
+  .status-bloqueado {
+    background-color: #e74c3c;
+    color: white;
+  }
+  
+  @media (max-width: 768px) {
+    .links{
+        flex-direction: column;
+      }
+  }
+  

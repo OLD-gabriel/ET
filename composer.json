@@ -1,0 +1,14 @@
+{
+    "name": "mscode/projeto-estoque",
+    "require-dev": {
+        "symfony/var-dumper": "*"
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}

@@ -1,0 +1,14 @@
+@import url(componentes/login.css);
+@import url(componentes/PopUp.css);
+@import url(componentes/header.css);
+@import url(componentes/home.css);
+
+body {
+  height: 100%;
+  background-color: rgb(216, 216, 216);
+}
+ 
+main, .main{
+  min-height: 95vh;
+}
+
