@@ -2,6 +2,7 @@
 @import url(componentes/PopUp.css);
 @import url(componentes/header.css);
 @import url(componentes/home.css);
+@import url(componentes/eletiva.css);
 
 body {
   height: 100%;

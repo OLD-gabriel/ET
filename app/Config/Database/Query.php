@@ -1,7 +1,6 @@
 <?php
 
-namespace App\Database;
-
+namespace App\Config\Database;
 class Query
 {
     private \PDO $pdo;
@@ -9,11 +8,11 @@ class Query
     public function __construct()
     {
         $database = new Database(
-            host: '127.0.0.1',
-            database: 'Estoque',
-            username: 'root',
-            password: 'gabCBA',
-            port: 3306,
+            host: $_ENV["DB_HOST"],
+            database: $_ENV["DB_DATABASE"],
+            username: $_ENV["DB_USER"],
+            password: $_ENV["DB_PASSWORD"],
+            port: $_ENV["DB_PORT"],
         );
 
         $this->pdo = $database->connection();

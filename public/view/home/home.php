@@ -4,13 +4,13 @@
         <br>
         <div class="links">
 
-            <a class="link-et" href="/eletivas">
+            <a class="link-et" href="eletivas">
                 <h3>ELETIVA</h3>
                 <i class="fas fa-book-open"></i>
                 <span class="status status-liberado">LIBERADO</span>
             </a>
 
-            <a class="link-et" href="">
+            <a class="link-et" href="#">
                 <h3>TUTORIA</h3>
                 <i class="fas fa-user-friends"></i>
                 <span class="status status-bloqueado">BLOQUEADO</span>

@@ -67,6 +67,7 @@
             <button onclick="Fechar_PopUp('RaNaoEncontrado')" class='Fechar-Popup'>FECHAR</button>
         </div>
     </div>
+    
     <?php unset($_SESSION["RaNaoEncontrado"]); }?>
 
     <script src="public/assets/js/PopUps.js"></script>

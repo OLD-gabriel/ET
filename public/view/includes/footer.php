@@ -23,8 +23,8 @@
             </div>
         </footer>
 
-        <script src="/assets/js/PopUps.js"></script>
-        <script src="/assets/js/Script.js"></script>
+        <script src="public/assets/js/PopUps.js"></script>
+        <script src="public/assets/js/Script.js"></script>
 
     </body>
 
