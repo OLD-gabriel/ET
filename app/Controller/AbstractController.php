@@ -4,7 +4,7 @@ namespace App\Controller;
 
 abstract class AbstractController
 {
-    public function render(string $viewName, array $data = [],bool $simple = false,$title = "ESCOLA NSL"): void
+    public function render(string $viewName, array $data = [],bool $simple = false,$title = "ESCOLA NSL",$caminhos = 1): void
     {
         if($simple == false){
             require_once( 'public/' . '/view/includes/header.php');

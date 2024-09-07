@@ -5,7 +5,12 @@
     <meta charset="UTF-8">
     <title><?= $title?></title>
 
-    <link rel="stylesheet" href="public/assets/css/style.css">
+    <?php if($caminhos == 1){ ?>
+        <link rel="stylesheet" href="public/assets/css/style.css">
+        <?php }else{ ?>
+            <link rel="stylesheet" href="../public/assets/css/style.css">
+        <?php } ?>
+
     <link rel="shortcut icon" href="public/assets/images/favicon.ico" type="image/x-icon">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,7 +52,6 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body p-3 bg-light d-flex flex-column">
-        <!-- Informações do Usuário -->
         <div class="user-info mb-4">
             <div class="info-item d-flex align-items-center mb-3">
                 <div class="icon-menu-offcanvas">

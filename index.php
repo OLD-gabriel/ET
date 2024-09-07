@@ -8,7 +8,8 @@ date_default_timezone_set('America/Sao_Paulo');
 session_start();
 
 if(!isset($_SESSION["LOGIN"])){
-    $_SESSION["LOGIN"] = False;
+    $_SESSION["LOGIN"] = FALSE;
+    $_SESSION["GESTOR"] = FALSE;
 }
 
 require_once 'vendor/autoload.php';

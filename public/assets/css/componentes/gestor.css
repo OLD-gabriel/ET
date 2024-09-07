@@ -1,0 +1,70 @@
+
+.sidebar {
+  background-color: #343a40;
+  color: white;
+  width: 250px;
+  padding: 20px;
+  top: 50px;
+  left: 50px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  overflow-y: auto;
+  height: 500px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.menu-button {
+  display: flex;
+  align-items: center;
+  background-color: #495057;
+  border-radius: 5px;
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.menu-button:hover {
+  background-color: #17a2b8;
+}
+
+.menu-button i {
+    margin-right: 10px;
+}
+
+.content {
+  padding: 20px;
+  width: 70%;  
+  background-color: #c0c0c083;
+  border-radius: 5px;
+  height: 500px;
+  overflow-y: auto;
+  margin-left: 20px ;
+ }
+
+.content div {
+  display: none;
+}
+
+.active-content {
+  display: block;
+  padding: 10px;
+  border: 2px solid #ddd;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.gestor-main{
+  display: flex;
+  width: 90%;
+  margin: 50px auto;
+  width: 90%;
+  overflow: hidden;
+  min-height: 40vw;
+}

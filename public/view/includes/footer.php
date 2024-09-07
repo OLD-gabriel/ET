@@ -23,9 +23,14 @@
             </div>
         </footer>
 
-        <script src="public/assets/js/PopUps.js"></script>
-        <script src="public/assets/js/Script.js"></script>
 
+        <?php if($caminhos == 1){ ?>
+            <script src="public/assets/js/PopUps.js"></script>
+            <script src="public/assets/js/Script.js"></script>
+        <?php }else{ ?>
+            <script src="../public/assets/js/PopUps.js"></script>
+            <script src="../public/assets/js/Script.js"></script>
+        <?php } ?>
     </body>
 
 </html>

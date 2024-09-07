@@ -24,33 +24,29 @@
     <div class="container-login container-fluid d-flex justify-content-center align-items-center min-vh-100">
         <div class="wrapper fadeInDown col-12 col-md-8 col-lg-6 col-xl-4">
             <div id="formContent">
-                <!-- Ícone do usuário -->
-                 <div id="formHeader">
+
+            <div id="formHeader">
                  <div class="fadeIn first">
                     <img src="https://telegra.ph/file/daa4ccd71a49aae9a7cc9.png" id="icon" alt="User Icon" />
                 </div>
-                <a class="underlineHover" href="#">ESCOLA NSL</a>
+                <a class="underlineHover" href="#">GESTOR</a>
                  </div>
 
-
-
-                <!-- Formulário de login -->
-                <form method="POST" action="login/autenticar" >
-                    <input type="text" id="ra" class="fadeIn second" name="ra" required placeholder="Insira seu RA">
+                <form method="POST" action="gestor/autenticar" >
+                    <input type="text" id="senha" class="fadeIn second" name="senha" required placeholder="INSIRA A SENHA">
                     <input type="submit" class="fadeIn fourth" name="submit" value="Logar">
                 </form>
 
-                <!-- Rodapé -->
                 <div id="formFooter">
-                    <a class="underlineHover" href="gestor">GESTOR</a>
+                    <a class="underlineHover" href="login">ALUNO</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <?php if(isset($_SESSION["RaNaoEncontrado"])) {?>
+    <?php if(isset($_SESSION["SenhaIncorreta"])) {?>
 
-    <div id='RaNaoEncontrado' class='PopUp-sobreposicao show'>
+    <div id='SenhaIncorreta' class='PopUp-sobreposicao show'>
         <div class='conteudo-popup'>
 
             <!-- 
@@ -63,12 +59,12 @@
             </div>
             <h2>ERRO!</h2>
 
-            <p>Esse RA não foi localizado</p>
-            <button onclick="Fechar_PopUp('RaNaoEncontrado')" class='Fechar-Popup'>FECHAR</button>
+            <p>A senha digitada está incorreta!</p>
+            <button onclick="Fechar_PopUp('SenhaIncorreta')" class='Fechar-Popup'>FECHAR</button>
         </div>
     </div>
     
-    <?php unset($_SESSION["RaNaoEncontrado"]); }?>
+    <?php unset($_SESSION["SenhaIncorreta"]); }?>
 
     <script src="public/assets/js/PopUps.js"></script>
     <script src="public/assets/js/Script.js"></script>

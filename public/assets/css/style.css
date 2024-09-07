@@ -3,13 +3,11 @@
 @import url(componentes/header.css);
 @import url(componentes/home.css);
 @import url(componentes/eletiva.css);
+@import url(componentes/gestor.css);
 
 body {
   height: 100%;
   background-color: rgb(216, 216, 216);
 }
  
-main, .main{
-  min-height: 95vh;
-}
-
+ 
