@@ -8,7 +8,7 @@ CREATE TABLE eletivas(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nome_eletiva VARCHAR(255) NOT NULL,
     nome_professores VARCHAR(255) NOT NULL,
-    turmas VARCHAR(255) NOT NULL,
+    turmas TEXT NOT NULL,
     vagas INT NOT NULL
 ) 
 

@@ -41,16 +41,13 @@
 .content {
   padding: 20px;
   width: 70%;  
-  background-color: #c0c0c083;
+  background-color: #c0c0c055;
   border-radius: 5px;
   height: 500px;
   overflow-y: auto;
   margin-left: 20px ;
  }
-
-.content div {
-  display: none;
-}
+ 
 
 .active-content {
   display: block;
@@ -67,4 +64,12 @@
   width: 90%;
   overflow: hidden;
   min-height: 40vw;
+}
+
+.content-section {
+  display: none;
+}
+
+.content-section.active {
+  display: block;
 }

@@ -22,7 +22,7 @@
 <?php } ?>
 
     <div class="home-et">
-        <h2 class="titulo-et"> ESCOLHA SUA ELETIVA </h2>
+        <h2 class="titulo-et" id="TituloEscolherEletiva" > ESCOLHA SUA ELETIVA </h2>
         <div class="area-eletivas">
            
         <?php foreach($data["eletivas"] as $eletiva){?>

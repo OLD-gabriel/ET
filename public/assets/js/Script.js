@@ -6,9 +6,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 data.forEach(eletiva => {
                     const spanVagas = document.getElementById(`Eletiva-vagas-${eletiva.id}`);
                     const divEletiva = document.getElementById(`Eletiva-${eletiva.id}`);
-                    let btnEscolher = divEletiva.querySelector('.btn-escolher');
+                    let btnEscolher = divEletiva ? divEletiva.querySelector('.btn-escolher') : null;
 
-                    if (spanVagas) {
+                    if (spanVagas && divEletiva) {
                         if (eletiva.vagas === 0) {
                             divEletiva.style.backgroundColor = '#dcdcdc';
 
@@ -36,26 +36,28 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 });
             })
-            .catch(error => console.error('Erro ao buscar dados das eletivas:', error));
     }
-    atualizarVagas();
-    setInterval(atualizarVagas, 500);
+
+    if (document.getElementById('TituloEscolherEletiva')) {
+        atualizarVagas();
+        setInterval(atualizarVagas, 500);
+    }
 });
 
-const buttons = document.querySelectorAll('.menu-button');
-const contentDivs = document.querySelectorAll('.content div');
 
-buttons.forEach(button => {
-    button.addEventListener('click', function() {
-        const target = this.getAttribute('data-target');
 
-        // Hide all content divs
-        contentDivs.forEach(div => div.style.display = 'none');
-
-        // Show the selected content
-        document.getElementById(target).style.display = 'block';
+function mostrarConteudo(id) {
+    var conteudos = document.querySelectorAll('.content-section');
+    conteudos.forEach(function(conteudo) {
+        conteudo.classList.remove('active');
     });
-});
+    document.getElementById(id).classList.add('active');
+}
 
-// Initially display the first content div
-document.getElementById('content1').style.display = 'block';
+function toggleSelection(turno) {
+    const checkboxes = document.querySelectorAll('.turma-checkbox-' + turno);
+    
+    const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+
+    checkboxes.forEach(checkbox => checkbox.checked = !allChecked);
+}

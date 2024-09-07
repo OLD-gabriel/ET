@@ -3,7 +3,8 @@
 @import url(componentes/header.css);
 @import url(componentes/home.css);
 @import url(componentes/eletiva.css);
-@import url(componentes/gestor.css);
+@import url(componentes/gestor/addEletiva.css);
+@import url(componentes/gestor/gestor.css);
 
 body {
   height: 100%;
