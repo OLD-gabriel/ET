@@ -35,6 +35,13 @@ abstract class AbstractController
         header("Location: $redirectUrl");
         die();
     }
+
+    public function show($data): void
+    {
+        echo "<pre>";
+        print_r($data);
+        echo "</pre>";
+    }
     
 
     /** Deve fazer o include da view */

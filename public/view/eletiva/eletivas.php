@@ -9,6 +9,18 @@
         </p>
     </div>
 
+    <?php if($data["escolha"] != NULL){ ?>
+    <div class="home-et escolha-confirmada">
+        <h2><i class="fas fa-check-circle"></i> Parabéns!</h2>
+        <p>
+            Você escolheu a eletiva <strong><?= $data["escolha"][0]["nome_eletiva"] ?></strong>. 
+            <br><i class="fas fa-graduation-cap"></i> Estamos ansiosos para vê-lo se destacando nessa jornada!
+            <br><i class="fas fa-lightbulb"></i> Aproveite ao máximo essa oportunidade de aprendizado.
+        </p>
+        <p class="atencao"><i class="fas fa-exclamation-triangle"></i> Lembre-se: sua escolha é definitiva. Reflita bem sobre o conteúdo da eletiva e prepare-se para novas descobertas!</p>
+    </div>
+<?php } ?>
+
     <div class="home-et">
         <h2 class="titulo-et"> ESCOLHA SUA ELETIVA </h2>
         <div class="area-eletivas">
@@ -29,12 +41,16 @@
                         ?>
                     </div>
                 </section>
+
+
+                
                 <section class="vagas">
                     <h3 class="titulo-vagas">VAGAS</h3>
                     <span class="quantidade-vagas" id="Eletiva-vagas-<?= $eletiva["id"] ?>"><?= $eletiva["vagas"] ?> VAGAS</span>
                 </section>
                 <br>
                 <button onclick="PopUpEscolherEletiva('<?= $eletiva['id'] ?>','<?= $eletiva['nome_eletiva'] ?>')" class="btn-escolher">ESCOLHER</button>
+                
             </div>
             <?php }?>
         </div>
@@ -62,3 +78,59 @@
             </div>
         </div>
     </div>
+
+    <?php if(isset($_SESSION["EletivaEscolhida"])) {?>
+
+<div id='EletivaEscolhida' class='PopUp-sobreposicao show'>
+    <div class='conteudo-popup'>
+
+        <div class="check">
+            <img src="public/assets/images/check.png" alt="">
+        </div>
+        <h2>SUCESSO!</h2>
+
+        <p>Você escolheu a eletiva  "<?= $_SESSION["NomeEletivaEscolhida"]?>" com sucesso! </p>
+        <button onclick="Fechar_PopUp('EletivaEscolhida')" class='Fechar-Popup'>FECHAR</button>
+    </div>
+</div>
+
+<?php 
+unset($_SESSION["EletivaEscolhida"]); 
+unset($_SESSION["NomeEletivaEscolhida"]); 
+}?>
+
+
+<?php if(isset($_SESSION["ERRO"])) {?>
+
+<div id='EletivaErro' class='PopUp-sobreposicao show'>
+    <div class='conteudo-popup'>
+
+        <div class="check">
+            <img src="public/assets/images/cancel.png" alt="">
+        </div>
+        <h2>ERRO!</h2>
+
+        <p>Ocorreu um erro interno! </p>
+        <button onclick="Fechar_PopUp('EletivaErro')" class='Fechar-Popup'>FECHAR</button>
+    </div>
+</div>
+
+<?php unset($_SESSION["ERRO"]); }?>
+
+<?php if(isset($_SESSION["EletivaJaEscolhida"])) {?>
+
+<div id='EletivaJaEscolhida' class='PopUp-sobreposicao show'>
+    <div class='conteudo-popup'>
+
+        <div class="check">
+            <img src="public/assets/images/cancel.png" alt="">
+        </div>
+        <h2>ERRO!</h2>
+
+        <p>Você ja escolheu a eletiva "<?= $data["escolha"][0]["nome_eletiva"]?>" . </p>
+        <button onclick="Fechar_PopUp('EletivaJaEscolhida')" class='Fechar-Popup'>FECHAR</button>
+    </div>
+</div>
+
+<?php unset($_SESSION["EletivaJaEscolhida"]); }?>
+

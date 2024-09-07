@@ -1,4 +1,3 @@
-/* Sobreposição (background escuro) */
 .PopUp-sobreposicao {
   position: fixed;
   top: 0;
@@ -11,17 +10,27 @@
   align-items: center;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
-/* Mostrar a sobreposição com animação */
 .PopUp-sobreposicao.show {
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  transition: opacity 0.4s ease;
+  animation: fadeInSlide 0.5s forwards;
 }
 
-/* Conteúdo principal do popup */
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .conteudo-popup {
   position: relative;
   background-color: #fefefe;
@@ -31,29 +40,49 @@
   border-radius: 15px;
   text-align: center;
   box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.3);
-  transform: scale(0.7) translateY(50px); /* Escalado e deslocado inicialmente */
+  transform: scale(0.7);
   opacity: 0;
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
-/* Animação de entrada */
 .PopUp-sobreposicao.show .conteudo-popup {
-  transform: scale(1) translateY(0); /* Sem deslocamento e escala normal */
+  transform: scale(1) translateY(0);
   opacity: 1;
+  animation: popUpInSlide 0.5s forwards;
 }
 
-/* Quando o popup fechar */
+@keyframes popUpInSlide {
+  from {
+    transform: scale(0.5) translateY(50px); 
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
 .PopUp-sobreposicao.hide {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
 .conteudo-popup.hide {
-  transform: scale(0.7) translateY(50px); /* Escala e desliza para fechar */
-  opacity: 0;
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  animation: popUpOut 0.5s forwards;
 }
+
+@keyframes popUpOut {
+  from {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.5) translateY(50px);
+    opacity: 0;
+  }
+}
+
  
 .uncheck img, .check img {
   width: 70px;
@@ -61,7 +90,6 @@
   margin: 20px auto;
 }
 
-/* Mostrar o popup */
 .PopUp-sobreposicao.show {
   opacity: 1;
   visibility: visible;

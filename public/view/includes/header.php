@@ -93,9 +93,8 @@
 
         </div>
 
-        <!-- Botão de Sair -->
         <div class="mt-auto">
-            <a href="/sair" class="btn btn-danger w-100">
+            <a href="sair" class="btn btn-danger w-100">
                 <i class="fas fa-sign-out-alt me-2"></i> Sair
             </a>
         </div>

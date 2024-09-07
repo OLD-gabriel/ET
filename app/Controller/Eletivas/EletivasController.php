@@ -12,8 +12,12 @@ class EletivasController extends AbstractController
         if($_SESSION["LOGIN"]){
             $query = new Eletiva();
             $eletivas = $query->eletivas();
+
+            $EletivaEscolhida = $query->pesquisarAlunoEletiva($_SESSION["RA"]);
+
             $dados = [
-                "eletivas" => $eletivas
+                "eletivas" => $eletivas,
+                "escolha"  => $EletivaEscolhida
             ];
 
             $this->render( viewName: "eletiva/eletivas", title: "Eletivas",data: $dados);
