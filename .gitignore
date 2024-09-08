@@ -1,5 +1,2 @@
-/vendor/
-.env/
-/.env/
-.env
+/vendor
 .env
