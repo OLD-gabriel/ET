@@ -89,7 +89,7 @@
         </div>
         <h2>SUCESSO!</h2>
 
-        <p>Você escolheu a eletiva  "<?= $_SESSION["NomeEletivaEscolhida"]?>" com sucesso! </p>
+        <p>Você escolheu a eletiva  <span class="destacado"><?= $_SESSION["NomeEletivaEscolhida"]?></span> com sucesso! </p>
         <button onclick="Fechar_PopUp('EletivaEscolhida')" class='Fechar-Popup'>FECHAR</button>
     </div>
 </div>
@@ -134,3 +134,6 @@ unset($_SESSION["NomeEletivaEscolhida"]);
 
 <?php unset($_SESSION["EletivaJaEscolhida"]); }?>
 
+<?php if(isset($data["SCRIPT"])){ ?>
+  <script src="public/assets/js/<?=$data["SCRIPT"]?>"></script>
+<?php } ?>

@@ -32,6 +32,7 @@ CREATE TABLE eletivas_escolhas(
     turma_aluno VARCHAR(255) NOT NULL,
     turno_aluno VARCHAR(255) NOT NULL
 )
+
 CHARACTER SET utf8 
 COLLATE utf8_general_ci;
     

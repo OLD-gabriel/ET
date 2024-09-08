@@ -124,10 +124,18 @@
   background-color: #1abc9c;
 }
 
+.botoes a:hover{
+  background-color: #129d81;
+}
 
 .botoes button{
   background-color: #c2584c;
 }
+
+.botoes button:hover{
+  background-color: #9d4238;
+}
+
 
 .Fechar-Popup {
   background-color: #1abc9c;
@@ -147,7 +155,7 @@
 }
 
 .Fechar-Popup:hover {
-  background-color: #16a085;
+  background-color: #14826c;
   transform: translateY(-2px) scale(1.05);
   cursor: pointer;
 }

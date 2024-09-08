@@ -4,7 +4,7 @@ namespace App\Controller\Gestor;
 
 use App\Controller\AbstractController;
 
-class GestorAutenticar extends AbstractController
+class GestorAutenticarController extends AbstractController
 {
     public function index(array $requestData): void
     {

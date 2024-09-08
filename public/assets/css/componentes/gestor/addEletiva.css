@@ -4,7 +4,7 @@
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   max-width: 800px;
-  margin: 50px auto;
+  margin: 10px auto;
 }
 
 .form-header {
@@ -119,4 +119,8 @@
 .form-section-title {
   margin-bottom: 20px;
   font-weight: bold;
+}
+
+#AddEletiva form{
+  padding-bottom: 100px;
 }

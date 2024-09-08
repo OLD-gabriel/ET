@@ -8,7 +8,12 @@ class GestorController extends AbstractController
 {
     public function index(array $data): void
     {
-        $this->render(viewName: 'gestor/gestor', simple: true);
+        if($_SESSION["GESTOR"]){
+            $this->render(viewName: 'gestor/gestor', simple: true);
+        }else{
+            $this->redirect("/login");
+        }
+        
     }
 
 }

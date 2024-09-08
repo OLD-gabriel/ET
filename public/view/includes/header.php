@@ -6,15 +6,16 @@
     <title><?= $title?></title>
 
     <?php if($caminhos == 1){ ?>
-        <link rel="stylesheet" href="public/assets/css/style.css">
+    <link rel="shortcut icon" href="public/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="public/assets/css/style.css">
         <?php }else{ ?>
+    <link rel="shortcut icon" href="../public/assets/images/favicon.ico" type="image/x-icon">
             <link rel="stylesheet" href="../public/assets/css/style.css">
         <?php } ?>
 
-    <link rel="shortcut icon" href="public/assets/images/favicon.ico" type="image/x-icon">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="https://kit.fontawesome.com/bf7e05c402.js" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

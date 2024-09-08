@@ -5,10 +5,14 @@
 @import url(componentes/eletiva.css);
 @import url(componentes/gestor/addEletiva.css);
 @import url(componentes/gestor/gestor.css);
+@import url(componentes/gestor/Escolhas.css);
 
 body {
   height: 100%;
   background-color: rgb(216, 216, 216);
 }
  
- 
+.destacado{
+  font-weight: bold;
+  text-decoration: underline;
+}

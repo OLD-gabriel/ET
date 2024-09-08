@@ -16,9 +16,16 @@ class Eletiva
 
     public function eletivas(): array
     {
-        $categorias = $this->query->select("eletivas");
+        $eletivas = $this->query->select("eletivas");
 
-        return $categorias;
+        return $eletivas;
+    }
+
+    public function escolhasEletivas(): array
+    {
+        $escolhas = $this->query->select("eletivas_escolhas");
+
+        return $escolhas;
     }
 
     public function PegarEletiva($id): array
@@ -32,6 +39,12 @@ class Eletiva
         return $query;
     }
 
+    public function InserirEletiva($dados): bool
+    {
+       $query = $this->query->insert("eletivas",$dados);
+        return $query;
+    }
+
     public function diminuirVagas(int $id, int $quantidade): bool
     {
         $update = $this->query->update("eletivas",["vagas" => $quantidade], "id = {$id}");
@@ -42,5 +55,17 @@ class Eletiva
     public function pesquisarAlunoEletiva($ra): array
     {
         return $this->query->select('eletivas_escolhas', "ra_aluno = {$ra}");
+    }
+
+    public function pesquisarAlunoEletivaID($ra): array
+    {
+        return $this->query->select('eletivas_escolhas', "id = {$ra}")[0];
+    }
+
+    public function excluirEscolha($id): bool
+    {
+        $excluir = $this->query->delete("eletivas_escolhas","id = {$id}");
+        
+        return $excluir;
     }
 }

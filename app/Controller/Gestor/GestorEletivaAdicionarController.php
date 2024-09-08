@@ -1,15 +1,15 @@
 <?php 
 
-namespace App\Controller\Eletivas;
+namespace App\Controller\Gestor;
 
 use App\Controller\AbstractController;
 use App\Model\Eletiva;
 
-class EletivaAdicionarController extends AbstractController
+class GestorEletivaAdicionarController extends AbstractController
 {
     public function index(array $requestData): void
     {
-        if($_SESSION["LOGIN"]){
+        if($_SESSION["GESTOR"]){
             
             $professores = [];
 
@@ -26,8 +26,17 @@ class EletivaAdicionarController extends AbstractController
                 "turmas"            => implode(";",$requestData["turmas"])
             ];
 
-            dd($dados);
+            $query = new Eletiva();
+            $inserir = $query->InserirEletiva($dados);
 
+            if($inserir){
+                $_SESSION["InserirEletiva"] = True;
+                $_SESSION["InserirEletivaNome"] = $requestData["nome"];
+                $this->redirect("/gestor/home");
+            }else{
+                $_SESSION["ERRO"] = True;
+                $this->redirect("/gestor/home");
+            }
         }else{
             $this->redirect("/login");
         }

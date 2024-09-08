@@ -3,6 +3,7 @@
 namespace App\Controller\Gestor;
 
 use App\Controller\AbstractController;
+use App\Model\Eletiva;
 
 class GestorHomeController extends AbstractController
 {
@@ -19,11 +20,16 @@ class GestorHomeController extends AbstractController
                 $turmasPorTurno[$turma['turno']][] = $turma;
             }
 
+            $query = new Eletiva();
+            $escolhas = $query->escolhasEletivas();    
+
             $dados = [
-                "turmasPorTurno" => $turmasPorTurno
+                "turmasPorTurno" => $turmasPorTurno,
+                "SCRIPT"         => "gestor.js",
+                "escolhas"         => $escolhas
             ];
 
-            $this->render(viewName: 'gestor/home', caminhos: 2, data: $dados);
+            $this->render(viewName: 'gestor/home', caminhos: 2, data: $dados,title: "Gestor");
         } else {
             $this->redirect("/login");
         }
