@@ -36,8 +36,12 @@ function PopUpStatusEletiva(nome,status){
 
 function PopUpExcluirEscolha(id,nomeAluno,nomeEletiva){
 
+  nomeAluno = decodeURIComponent(nomeAluno);
+  nomeEletiva = decodeURIComponent(nomeEletiva);
+
   document.getElementById('NomeAlunoEscolhaEletiva').innerHTML = nomeAluno
   document.getElementById('NomeEscolhaEletiva').innerHTML = nomeEletiva
   document.getElementById('AncoraExcluirEscolha').href = "excluir/escolha&id=" + id;
   Mostrar_PopUp("EletivaEscolher");
 }
+

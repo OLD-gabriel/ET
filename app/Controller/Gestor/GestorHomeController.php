@@ -11,7 +11,7 @@ class GestorHomeController extends AbstractController
     {
         if ($_SESSION["GESTOR"]) {
 
-            $apiUrl = 'https://escolansl.com/monitoramento/app/config/Geturmas.php';
+            $apiUrl = $_ENV["API_TURMAS"];
             $jsonData = file_get_contents($apiUrl);
             $dataArray = json_decode($jsonData, true);
 

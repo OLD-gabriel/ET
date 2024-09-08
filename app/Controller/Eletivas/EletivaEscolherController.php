@@ -25,8 +25,16 @@ class EletivaEscolherController extends AbstractController
             $EletivaEscolhida = $query->pesquisarAlunoEletiva($_SESSION["RA"]);
 
             if($EletivaEscolhida == NULL){
+
+                $liberado = $query->liberado();
+
+                $status = [];
+                foreach ($liberado as $eletiva) {
+                    $status[$eletiva['nome']] = $eletiva['status'];
+                }
                 
-                $inserir = $query->InserirAlunoEletiva($dados);
+                if($status["ELETIVA"] == "1"){
+                    $inserir = $query->InserirAlunoEletiva($dados);
 
                 if($inserir){
                     $vagas = $eletiva["vagas"] - 1;
@@ -43,6 +51,11 @@ class EletivaEscolherController extends AbstractController
                     $_SESSION["ERRO"] = True;
                     $this->redirect("eletivas");
                 }
+                }else{
+                    $_SESSION["EletivaDesativada"] = True;
+                    $this->redirect("/home");
+                }
+                
             }else{
                 $_SESSION["EletivaJaEscolhida"] = True;
                 $this->redirect("eletivas");  

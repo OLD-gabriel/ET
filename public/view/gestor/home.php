@@ -1,16 +1,16 @@
 <main class="min-vh-100">
     <div class="gestor-main">
 
-    <button class="hamburger-menu" onclick="toggleSidebar()">
+        <button class="hamburger-menu" onclick="toggleSidebar()">
             <i class="fas fa-bars"></i> Menu
         </button>
- 
+
         <div class="sidebar">
-        <div class="sidebar-toggle">
-            <button class="toggle-button" onclick="Retrair()">
-                <i class="fas fa-angle-double-left"></i>
-            </button>
-        </div>
+            <div class="sidebar-toggle">
+                <button class="toggle-button" onclick="Retrair()">
+                    <i class="fas fa-angle-double-left"></i>
+                </button>
+            </div>
             <button class="menu-button" onclick="mostrarConteudo('AddEletiva')">
                 <i class="fas fa-plus-circle"></i> <span class="menu-text">Adicionar Eletiva</span>
             </button>
@@ -186,6 +186,7 @@
                             </button>
                         </div>
                     </form>
+                    <div><br><br><br></div>
                 </div>
 
             </div>
@@ -216,6 +217,7 @@
                         </tbody>
                     </table>
                 </div>
+                <div><br><br><br><br><br><br><br><br></div>
 
             </div>
 
@@ -244,105 +246,134 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($data["eletivas"] as $eletiva){?>
+                            <?php foreach($data["eletivas"] as $eletiva): ?>
                             <tr>
-                                <td><?= $eletiva["nome_eletiva"]?></td>
+                                <td><?= htmlspecialchars($eletiva["nome_eletiva"], ENT_QUOTES, 'UTF-8') ?></td>
                                 <td>
-                                    <?php foreach(explode(";",$eletiva["nome_professores"]) as $professor){ ?>
-                                    <span><?= $professor?></span> <br>
-                                    <?php } ?>
+                                    <?php foreach(explode(";", $eletiva["nome_professores"]) as $professor): ?>
+                                    <span><?= htmlspecialchars($professor, ENT_QUOTES, 'UTF-8') ?></span> <br>
+                                    <?php endforeach; ?>
                                 </td>
-                                <td><?= $eletiva["turno"]?></td>
-                                <td id="Eletiva-vagas-<?= $eletiva["id"]?>"><?= $eletiva["vagas"]?></td>
-                                <td><button onclick="EditarEletiva('<?= $eletiva['id']?>','<?= $eletiva['nome_eletiva']?>','<?= $eletiva['nome_professores']?>','<?= $eletiva['turno']?>','<?= $eletiva['vagas']?>','<?= $eletiva['turmas']?>')" class="delete-btn"><i class="fas fa-pencil-alt " style="color: #23BD24;"
-                                            title="Editar"></i>
-                                    </button></td>
-                                <td><button
-                                        onclick="PopUpExcluirEletiva('<?= $eletiva['id'] ?>','<?= $eletiva['nome_eletiva'] ?>')"
-                                        class="delete-btn"><i class="fas fa-trash-alt"></i>
+                                <td><?= htmlspecialchars($eletiva["turno"], ENT_QUOTES, 'UTF-8') ?></td>
+                                <td id="Eletiva-vagas-<?= htmlspecialchars($eletiva["id"], ENT_QUOTES, 'UTF-8') ?>">
+                                    <?= htmlspecialchars($eletiva["vagas"], ENT_QUOTES, 'UTF-8') ?></td>
+                                <td>
+                                    <button onclick="EditarEletiva('<?= htmlspecialchars($eletiva['id'], ENT_QUOTES, 'UTF-8') ?>','<?= htmlspecialchars($eletiva['nome_eletiva'], ENT_QUOTES, 'UTF-8') ?>','<?= htmlspecialchars($eletiva['nome_professores'], ENT_QUOTES, 'UTF-8') ?>','<?= htmlspecialchars($eletiva['turno'], ENT_QUOTES, 'UTF-8') ?>','<?= htmlspecialchars($eletiva['vagas'], ENT_QUOTES, 'UTF-8') ?>','<?= htmlspecialchars($eletiva['turmas'], ENT_QUOTES, 'UTF-8') ?>'
+                )" class="delete-btn">
+                                        <i class="fas fa-pencil-alt" style="color: #23BD24;" title="Editar"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button onclick="PopUpExcluirEletiva(
+                    '<?= htmlspecialchars($eletiva['id'], ENT_QUOTES, 'UTF-8') ?>',
+                    '<?= htmlspecialchars($eletiva['nome_eletiva'], ENT_QUOTES, 'UTF-8') ?>'
+                )" class="delete-btn">
+                                        <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </td>
                             </tr>
-                            <?php }?>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
+                    <div><br><br><br><br><br><br><br><br></div>
                 </div>
+
                 <div class="hide" id="editar-eletiva">
-    <div class="container form-container">
-        <div class="form-header">
-            <h2><i class="fas fa-book"></i> Editar Eletiva</h2>
-        </div>
-
-        <form method="POST" action="eletiva/editar&id=" id="editar-eletiva-form">
-            <div class="mb-4">
-                <label for="editar-eletiva-nome" class="form-label"><i class="fas fa-chalkboard"></i> Nome da Eletiva</label>
-                <input type="text" class="form-control" name="editar-nome" id="editar-eletiva-nome" placeholder="Digite o nome da eletiva" required>
-            </div>
-
-            <div class="row mb-4">
-                <div class="col-md-4">
-                    <label for="editar-professor1" class="form-label"><i class="fas fa-user"></i> Nome do Professor 1</label>
-                    <input type="text" class="form-control" name="editar-nome-professor[]" id="editar-professor1" placeholder="Professor 1" required>
-                </div>
-                <div class="col-md-4">
-                    <label for="editar-professor2" class="form-label"><i class="fas fa-user"></i> Nome do Professor 2</label>
-                    <input type="text" class="form-control" name="editar-nome-professor[]" id="editar-professor2" placeholder="Professor 2">
-                </div>
-                <div class="col-md-4">
-                    <label for="editar-professor3" class="form-label"><i class="fas fa-user"></i> Nome do Professor 3</label>
-                    <input type="text" class="form-control" name="editar-nome-professor[]" id="editar-professor3" placeholder="Professor 3">
-                </div>
-            </div>
-
-            <div class="mb-4">
-                <label for="editar-vagas" class="form-label"><i class="fas fa-users"></i> Vagas da Eletiva</label>
-                <input type="number" class="form-control" name="editar-vagas" id="editar-vagas" placeholder="Número de vagas" required>
-            </div>
-
-            <div class="mb-4">
-                <h5 class="form-section-title">Selecione as turmas que podem participar dessa eletiva:</h5>
-
-                <?php foreach ($data["turmasPorTurno"] as $turno => $turmas): ?>
-                <div class="turno-section">
-                    <h3 class="turno-title"><?= $turno ?></h3>
-
-                    <button type="button" class="select-all-button" onclick="toggleSelection('<?= $turno ?>')">
-                        <i class="fas fa-tasks fa-1x"></i> Selecionar Tudo
-                    </button>
-
-                    <div class="turmas-grid">
-                        <?php foreach ($turmas as $turma): ?>
-                        <div class="custom-checkbox">
-                            <input type="checkbox" name="editar-turmas[]" value="<?= $turma["nome"] ?>" id="editar-turma-eletiva-<?= $turma["id"] ?>" class="turma-checkbox-<?= $turno ?>">
-                            <label for="editar-turma-eletiva-<?= $turma["id"] ?>"><i class="fas fa-check-circle"></i> <?= $turma["nome"] ?></label>
+                    <div class="container form-container">
+                        <div class="form-header">
+                            <h2><i class="fas fa-book"></i> Editar Eletiva</h2>
                         </div>
-                        <?php endforeach; ?>
+
+                        <form method="POST" action="eletiva/editar&id=" id="editar-eletiva-form">
+                            <div class="mb-4">
+                                <label for="editar-eletiva-nome" class="form-label"><i class="fas fa-chalkboard"></i>
+                                    Nome da Eletiva</label>
+                                <input type="text" class="form-control" name="editar-nome" id="editar-eletiva-nome"
+                                    placeholder="Digite o nome da eletiva" required>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-4">
+                                    <label for="editar-professor1" class="form-label"><i class="fas fa-user"></i> Nome
+                                        do Professor 1</label>
+                                    <input type="text" class="form-control" name="editar-nome-professor[]"
+                                        id="editar-professor1" placeholder="Professor 1" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="editar-professor2" class="form-label"><i class="fas fa-user"></i> Nome
+                                        do Professor 2</label>
+                                    <input type="text" class="form-control" name="editar-nome-professor[]"
+                                        id="editar-professor2" placeholder="Professor 2">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="editar-professor3" class="form-label"><i class="fas fa-user"></i> Nome
+                                        do Professor 3</label>
+                                    <input type="text" class="form-control" name="editar-nome-professor[]"
+                                        id="editar-professor3" placeholder="Professor 3">
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="editar-vagas" class="form-label"><i class="fas fa-users"></i> Vagas da
+                                    Eletiva</label>
+                                <input type="number" class="form-control" name="editar-vagas" id="editar-vagas"
+                                    placeholder="Número de vagas" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <h5 class="form-section-title">Selecione as turmas que podem participar dessa eletiva:
+                                </h5>
+
+                                <?php foreach ($data["turmasPorTurno"] as $turno => $turmas): ?>
+                                <div class="turno-section">
+                                    <h3 class="turno-title"><?= $turno ?></h3>
+
+                                    <button type="button" class="select-all-button"
+                                        onclick="toggleSelection('<?= $turno ?>')">
+                                        <i class="fas fa-tasks fa-1x"></i> Selecionar Tudo
+                                    </button>
+
+                                    <div class="turmas-grid">
+                                        <?php foreach ($turmas as $turma): ?>
+                                        <div class="custom-checkbox">
+                                            <input type="checkbox" name="editar-turmas[]" value="<?= $turma["nome"] ?>"
+                                                id="editar-turma-eletiva-<?= $turma["id"] ?>"
+                                                class="turma-checkbox-<?= $turno ?>">
+                                            <label for="editar-turma-eletiva-<?= $turma["id"] ?>"><i
+                                                    class="fas fa-check-circle"></i> <?= $turma["nome"] ?></label>
+                                        </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+                                <?php endforeach; ?>
+                            </div>
+
+                            <div class="mb-4">
+                                <h5 class="form-section-title">Selecione o turno dessa eletiva:</h5>
+
+                                <div class="turmas-grid">
+                                    <?php foreach ($data["turnos"] as $turno): ?>
+                                    <div class="custom-checkbox">
+                                        <input required type="radio" name="editar-turno" value="<?= $turno ?>"
+                                            id="editar-turno-eletiva-<?= $turno ?>"
+                                            class="editar-turma-checkbox-<?= $turno ?>">
+                                        <label for="editar-turno-eletiva-<?= $turno ?>"><i
+                                                class="fas fa-check-circle"></i> <?= $turno ?></label>
+                                    </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="button" style="background-color: red;" class="btn-submit"
+                                    onclick="CancelarEdicao()"><i class="fas fa-times"></i> Cancelar</button>
+
+                                <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Atualizar
+                                    Eletiva</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <?php endforeach; ?>
-            </div>
-
-            <div class="mb-4">
-                <h5 class="form-section-title">Selecione o turno dessa eletiva:</h5>
-
-                <div class="turmas-grid">
-                    <?php foreach ($data["turnos"] as $turno): ?>
-                    <div class="custom-checkbox">
-                        <input required type="radio" name="editar-turno" value="<?= $turno ?>" id="editar-turno-eletiva-<?= $turno ?>" class="editar-turma-checkbox-<?= $turno ?>">
-                        <label for="editar-turno-eletiva-<?= $turno ?>"><i class="fas fa-check-circle"></i> <?= $turno ?></label>
-                    </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-
-            <div class="text-center">
-            <button type="button" style="background-color: red;" class="btn-submit" onclick="CancelarEdicao()"><i class="fas fa-times"></i> Cancelar</button>
-
-                <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Atualizar Eletiva</button>
-            </div>
-        </form>
-    </div>
-</div>
             </div>
         </div>
 

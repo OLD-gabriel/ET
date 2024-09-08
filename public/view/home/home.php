@@ -32,3 +32,20 @@
 <?php if(isset($data["SCRIPT"])){ ?>
 <script src="public/assets/js/<?=$data["SCRIPT"]?>"></script>
 <?php } ?>
+
+<?php if(isset($_SESSION["EletivaDesativada"])) {?>
+
+<div id='EletivaDesativada' class='PopUp-sobreposicao show'>
+    <div class='conteudo-popup'>
+
+        <div class="check">
+            <img src="public/assets/images/cancel.png" alt="">
+        </div>
+        <h2>ERRO!</h2>
+
+        <p>O sistema de eletivas está desativado!</p>
+        <button onclick="Fechar_PopUp('EletivaDesativada')" class='Fechar-Popup'>FECHAR</button>
+    </div>
+</div>
+
+<?php unset($_SESSION["EletivaDesativada"]); }?>

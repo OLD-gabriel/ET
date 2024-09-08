@@ -10,7 +10,7 @@ class LoginAutenticar extends AbstractController
     {
         $alunoEncontrado = false;
 
-        $apiUrl = 'https://escolansl.com/monitoramento/app/config/GetAlunos.php';
+        $apiUrl = $_ENV["API_ALUNOS"];
         $jsonData = file_get_contents($apiUrl);
         $dataArray = json_decode($jsonData, true);
 
