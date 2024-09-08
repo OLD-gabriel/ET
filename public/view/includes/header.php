@@ -38,11 +38,9 @@
 
     <div class="user">
 
-        <?php if($_SESSION["LOGIN"]){?>
         <a data-bs-toggle="offcanvas" href="#offcanvasRight" role="button" aria-controls="offcanvasRight">
             <i class="far fa-user"></i>
         </a>
-        <?php }?>
 
     </div>
 </header>
@@ -58,11 +56,14 @@
     </div>
     <div class="offcanvas-body p-3 bg-light d-flex flex-column">
         <div class="user-info mb-4">
+            <?php if($gestor != True){ ?>
             <div class="info-item d-flex align-items-center mb-3">
+
                 <div class="icon-menu-offcanvas">
                     <i class="fas fa-user "></i>
 
                 </div>
+
                 <div>
                     <h6 class="mb-0">Nome:</h6>
                     <p class="text-muted mb-0"><?= $_SESSION["NOME"]; ?></p>
@@ -99,6 +100,20 @@
                     <p class="text-muted mb-0"><?= $_SESSION['TURNO']; ?></p>
                 </div>
             </div>
+            <?php }else{ ?>
+            <div class="info-item d-flex align-items-center mb-3">
+                <div class="icon-menu-offcanvas">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div>
+                    <h6 class="mb-0">Gestor:</h6>
+                    <p class="text-muted mb-0">Você está logado como gestor. Aqui você pode gerenciar e supervisionar as
+                        eletivas e tutoria da escola.</p>
+                </div>
+            </div>
+             
+            <?php } ?>
+
 
         </div>
 

@@ -95,5 +95,9 @@ class Eletiva
         return $this->query->update("liberado",$dados,"nome = '{$nome}'");
     }
 
+    public function editarEletiva($dados, $id):bool
+    {
+        return $this->query->update("eletivas",$dados,"id = {$id}");
+    }
     
 }

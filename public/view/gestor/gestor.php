@@ -33,7 +33,7 @@
                  </div>
 
                 <form method="POST" action="gestor/autenticar" >
-                    <input type="text" id="senha" class="fadeIn second" name="senha" required placeholder="INSIRA A SENHA">
+                    <input type="password" id="senha" class="fadeIn second" name="senha" required placeholder="INSIRA A SENHA">
                     <input type="submit" class="fadeIn fourth" name="submit" value="Logar">
                 </form>
 

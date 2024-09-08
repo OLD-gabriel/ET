@@ -16,6 +16,7 @@ require_once 'vendor/autoload.php';
 require_once 'app/Config/routes.php';
 
 use Dotenv\Dotenv;
+use app\Config\Database\Backup;
 
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();

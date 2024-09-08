@@ -8,10 +8,12 @@ function mostrarConteudo(id) {
 
 function toggleSelection(turno) {
     const checkboxes = document.querySelectorAll('.turma-checkbox-' + turno);
-    const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
-    checkboxes.forEach(checkbox => checkbox.checked = !allChecked);
+    
+    const filteredCheckboxes = Array.from(checkboxes).filter(checkbox => checkbox.type !== 'radio');
+    
+    const allChecked = filteredCheckboxes.every(checkbox => checkbox.checked);
+    filteredCheckboxes.forEach(checkbox => checkbox.checked = !allChecked);
 }
-
 
 let allData = [];
 
@@ -68,7 +70,7 @@ document.getElementById('searchNome').addEventListener('input', filterAndUpdateT
 document.getElementById('searchTurno').addEventListener('input', filterAndUpdateTable);
 document.getElementById('searchEletiva').addEventListener('input', filterAndUpdateTable);
 
-setInterval(fetchData, 10000);
+setInterval(fetchData, 500);
 fetchData();
 
 
@@ -97,4 +99,92 @@ document.addEventListener("DOMContentLoaded", function() {
 
         atualizarVagas();
         setInterval(atualizarVagas, 500);
+});
+
+
+
+function EditarEletiva(id, nome, professores, turno, vagas, turmas) {
+    document.getElementById('listar-eletivas').classList.add('hide');
+    document.getElementById('editar-eletiva').classList.remove('hide');
+
+    document.getElementById('editar-eletiva-nome').value = nome;
+    document.getElementById('editar-vagas').value = vagas;
+
+    const professoresArray = professores.split(';');
+    document.getElementById('editar-professor1').value = professoresArray[0] || '';
+    document.getElementById('editar-professor2').value = professoresArray[1] || '';
+    document.getElementById('editar-professor3').value = professoresArray[2] || '';
+
+    const turmasArray = turmas.split(';');
+    document.querySelectorAll('input[name="editar-turmas[]"]').forEach(function (checkbox) {
+        checkbox.checked = turmasArray.includes(checkbox.value);
+    });
+
+    const turnoRadio = document.querySelector(`input[name="editar-turno"][value="${turno}"]`);
+    if (turnoRadio) {
+        turnoRadio.checked = true;
+    }
+
+    document.getElementById('editar-eletiva-form').action = `eletiva/editar&id=${id}`;
+}
+
+function CancelarEdicao() {
+    document.getElementById('editar-eletiva').classList.add('hide');
+    document.getElementById('listar-eletivas').classList.remove('hide');
+
+    document.getElementById('editar-eletiva-nome').value = '';
+    document.getElementById('editar-vagas').value = '';
+    document.getElementById('editar-professor1').value = '';
+    document.getElementById('editar-professor2').value = '';
+    document.getElementById('editar-professor3').value = '';
+    document.querySelectorAll('input[name="editar-turmas[]"]').forEach(function (checkbox) {
+        checkbox.checked = false;
+    });
+    document.querySelector('input[name="editar-turno"]:checked').checked = false;
+}
+
+
+function toggleSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('show'); 
+  }
+
+  function Retrair() {
+    const sidebar = document.querySelector('.sidebar');
+    const toggleButton = document.querySelector('.toggle-button i');
+    
+    sidebar.classList.toggle('retracted');
+
+    toggleButton.classList.toggle('rotated');
+}
+  
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const nomeInput = document.getElementById('searchNomeEletiva');
+    const turnoInput = document.getElementById('searchTurnoEletiva');
+    const tabela = document.getElementById('tabelaEletivas');
+    const linhas = tabela.querySelectorAll('tbody tr');
+
+    function filtrarTabela() {
+        const nomeFiltro = nomeInput.value.toLowerCase();
+        const turnoFiltro = turnoInput.value.toLowerCase();
+
+        linhas.forEach(function(linha) {
+            const nome = linha.querySelector('td:nth-child(1)').textContent.toLowerCase();
+            const turno = linha.querySelector('td:nth-child(3)').textContent.toLowerCase();
+
+            const nomeCorrespondente = nome.includes(nomeFiltro);
+            const turnoCorrespondente = turno.includes(turnoFiltro);
+
+            if (nomeCorrespondente && turnoCorrespondente) {
+                linha.style.display = '';
+            } else {
+                linha.style.display = 'none';
+            }
+        });
+    }
+
+    nomeInput.addEventListener('input', filtrarTabela);
+    turnoInput.addEventListener('input', filtrarTabela);
 });

@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 divEletiva.appendChild(btnEscolher);
                             }
                         }
-                        spanVagas.textContent = `${eletiva.vagas} VAGAS`;
+                        spanVagas.innerHTML = `<span class="destacado">${eletiva.vagas}</span> VAGAS`;
                     }
                 });
             })
@@ -42,4 +42,17 @@ document.addEventListener("DOMContentLoaded", function() {
         atualizarVagas();
         setInterval(atualizarVagas, 500);
     }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const maxLength = 60;
+    const titulos = document.querySelectorAll('.titulo-curso');
+
+    titulos.forEach(function(titulo) {
+        if (titulo.textContent.length > maxLength) {
+            const textoOriginal = titulo.textContent;
+            const textoTruncado = textoOriginal.substring(0, maxLength) + '...';
+            titulo.textContent = textoTruncado;
+        }
+    });
 });

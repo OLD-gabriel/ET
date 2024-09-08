@@ -13,6 +13,7 @@ class EncerrarController extends AbstractController
         unset($_SESSION["TURMA"]);
         unset($_SESSION["TURNO"]);
         unset($_SESSION["LOGIN"]);
+        unset($_SESSION["GESTOR"]);
 
         $this->redirect("login");
     }

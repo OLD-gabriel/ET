@@ -81,16 +81,14 @@ body {
   transform: scale(0.95);
 }
 
-.container-login input[type=text] {
+.container-login input[type=password],.container-login input[type=text]  {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
   padding: 20px 32px;
-  /* Aumentei o padding vertical */
   text-align: center;
   font-size: 16px;
   margin: 20px 0;
-  /* Espaçamento maior em cima e embaixo */
   width: 85%;
   border: 2px solid #f6f6f6;
   transition: all 0.5s ease-in-out;
@@ -98,15 +96,14 @@ body {
   outline: none;
 }
 
-.container-login input[type=text]:focus {
+.container-login input[type=password]:focus,.container-login input[type=text]:focus {
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
 }
 
-/* ANIMATION */
 .container-login .fadeIn {
   opacity: 0;
-  animation: fadeIn ease-in 1s forwards;
+  animation: fadeIn ease-in 0.6s forwards;
 }
 
 @keyframes fadeIn {
@@ -128,11 +125,11 @@ body {
 }
 
 .container-login .fadeIn.third {
-  animation-delay: 0.8s;
+  animation-delay: 0.6s;
 }
 
 .container-login .fadeIn.fourth {
-  animation-delay: 1s;
+  animation-delay: 0.6s;
 }
 
 .container-login .underlineHover:after {

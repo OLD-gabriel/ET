@@ -4,7 +4,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 12px rgba(66, 66, 66, 0.278);
     width: 285px;
-    min-height: 340px;
+    min-height: 360px;
     margin: 10px auto;
     font-family: Arial, sans-serif;
     position: relative;
@@ -12,10 +12,11 @@
 }
 
 .titulo-curso {
-    font-size: 20px;
+    font-size: 18px;
     color: #333;
     margin-bottom: 8px;
     font-weight: bold;
+    
 }
 
 .titulo-professores,
@@ -35,12 +36,12 @@
 }
 
 .professor {
-    font-size: 15px;
+    font-size: 17px;
     color: #444;
 }
 
 .quantidade-vagas {
-    font-size: 13px;
+    font-size: 15px;
     color: #444;
     display: block;
     margin-top: 3px;

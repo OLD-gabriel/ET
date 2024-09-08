@@ -39,7 +39,7 @@ class GestorHomeController extends AbstractController
                 "turnos"         => explode(",",$_ENV["TURNOS"])
             ];
 
-            $this->render(viewName: 'gestor/home', caminhos: 2, data: $dados,title: "Gestor");
+            $this->render(viewName: 'gestor/home', caminhos: 2, data: $dados,title: "Gestor", gestor: True);
         } else {
             $this->redirect("/login");
         }

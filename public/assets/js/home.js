@@ -30,3 +30,4 @@ function verificarStatus() {
 setInterval(verificarStatus, 500);
 
 verificarStatus();
+
