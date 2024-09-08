@@ -8,7 +8,7 @@
     margin: 20px auto;
 }
 
-#EscolhasEletivas {
+.tabela {
     width: 100%;
     border-collapse: collapse;
     background-color: #ffffff;
@@ -17,13 +17,13 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-#EscolhasEletivas th, #EscolhasEletivas td {
+.tabela th, .tabela td {
     padding: 15px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
-#EscolhasEletivas th {
+.tabela th {
     background-color: #17a2b8;
     color: white;
     font-weight: bold;
@@ -31,12 +31,12 @@
     text-transform: uppercase;
 }
 
-#EscolhasEletivas tbody tr:hover {
+.tabela tbody tr:hover {
     background-color: #f1f1f1;
     transition: background-color 0.3s;
 }
 
-#EscolhasEletivas td {
+.tabela td {
     font-family: 'Arial', sans-serif;
     color: #333;
     text-align: center;
@@ -65,7 +65,7 @@
         padding: 10px;
     }
 
-    #EscolhasEletivas th, #EscolhasEletivas td {
+    .tabela th, .tabela td {
         padding: 10px;
     }
 }

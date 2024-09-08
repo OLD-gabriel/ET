@@ -19,6 +19,21 @@ function PopUpEscolherEletiva(id,nome){
   Mostrar_PopUp("EletivaEscolher");
 }
 
+function PopUpExcluirEletiva(id,nome){
+
+  document.getElementById('nome-eletiva-excluir-popup').innerHTML = nome
+  document.getElementById('AncoraExcluirEletiva').href = "eletiva/excluir&id=" + id;
+  Mostrar_PopUp("EletivaExcluir");
+}
+
+function PopUpStatusEletiva(nome,status){
+
+  document.getElementById('ValorStatus').innerHTML = status
+  document.getElementById('NomeStatus').innerHTML = nome
+  document.getElementById('AncoraAlterarStatus').href = "status&nome=" + nome + "&status=" + status;
+  Mostrar_PopUp("StatusAlterar");
+}
+
 function PopUpExcluirEscolha(id,nomeAluno,nomeEletiva){
 
   document.getElementById('NomeAlunoEscolhaEletiva').innerHTML = nomeAluno

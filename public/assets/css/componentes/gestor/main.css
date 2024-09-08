@@ -1,0 +1,67 @@
+/* Estilização da Div Principal */
+.main-content {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 50px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 40px auto;
+    transition: all 0.3s ease;
+}
+
+.main-content.active {
+    display: block;
+}
+
+.main-title {
+    font-size: 2.5em;
+    color: #2c3e50;
+    margin-bottom: 40px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Botões de ação principais */
+.main-buttons-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.main-action-button {
+    background-color: #2980b9;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.main-action-button i {
+    font-size: 1.5em;
+}
+
+.main-action-button:hover {
+    background-color: #1a5988;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+    .main-buttons-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-action-button {
+        width: 100%;
+        text-align: center;
+    }
+}

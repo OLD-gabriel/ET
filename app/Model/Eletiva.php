@@ -21,6 +21,13 @@ class Eletiva
         return $eletivas;
     }
 
+    public function liberado(): array
+    {
+        $eletivas = $this->query->select("liberado");
+
+        return $eletivas;
+    }
+
     public function escolhasEletivas(): array
     {
         $escolhas = $this->query->select("eletivas_escolhas");
@@ -68,4 +75,25 @@ class Eletiva
         
         return $excluir;
     }
+
+    public function excluirEletivaEscolhas($id): bool
+    {
+        $excluir = $this->query->delete("eletivas_escolhas","id_eletiva = {$id}");
+        
+        return $excluir;
+    }
+
+    public function excluirEletiva($id): bool
+    {
+        $excluir = $this->query->delete("eletivas","id = {$id}");
+        
+        return $excluir;
+    }
+
+    public function alterarStatus($dados, $nome):bool
+    {
+        return $this->query->update("liberado",$dados,"nome = '{$nome}'");
+    }
+
+    
 }

@@ -6,6 +6,8 @@
 @import url(componentes/gestor/addEletiva.css);
 @import url(componentes/gestor/gestor.css);
 @import url(componentes/gestor/Escolhas.css);
+@import url(componentes/gestor/status.css);
+@import url(componentes/gestor/main.css);
 
 body {
   height: 100%;

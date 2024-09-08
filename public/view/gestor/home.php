@@ -11,13 +11,83 @@
             <button class="menu-button" onclick="mostrarConteudo('Eletivas')">
                 <i class="fas fa-tachometer-alt"></i> Gerenciar Eletivas
             </button>
-            <button class="menu-button" onclick="mostrarConteudo('content4')">
+            <button class="menu-button" onclick="mostrarConteudo('Status')">
                 <i class="fas fa-info-circle"></i> Status
             </button>
         </div>
 
         <div class="content">
-            <div id="AddEletiva" class="content-section active">
+
+            <div id="Main" class="content-section main-content active">
+                <center>
+                    <h2 class="main-title"><i class="fas fa-home"></i> Bem-vindo à Gestão de Eletivas</h2>
+                </center>
+
+                <div class="main-buttons-container">
+                    <button class="main-action-button" onclick="mostrarConteudo('AddEletiva')">
+                        <i class="fas fa-plus-circle"></i> Adicionar Eletiva
+                    </button>
+                    <button class="main-action-button" onclick="mostrarConteudo('Escolhas')">
+                        <i class="fas fa-list-ul"></i> Visualizar Escolhas
+                    </button>
+                    <button class="main-action-button" onclick="mostrarConteudo('Eletivas')">
+                        <i class="fas fa-tachometer-alt"></i> Gerenciar Eletivas
+                    </button>
+                    <button class="main-action-button" onclick="mostrarConteudo('Status')">
+                        <i class="fas fa-info-circle"></i> Status dos Sistemas
+                    </button>
+                </div>
+            </div>
+
+
+            <div id="Status" class="content-section">
+                <center>
+                    <h2 class="status-title"><i class="fas fa-cogs"></i> Status dos Sistemas</h2>
+
+                </center>
+
+                <div class="status-form">
+                    <button type="button" id="button-eletiva"
+                        onclick="PopUpStatusEletiva('ELETIVA','<?= $data['liberado']['ELETIVA'] == '1' ? 'desativar' : 'ativar' ?>')"
+                        class="btn-status">
+                        <i class="fas fa-chalkboard"></i> ELETIVA
+                        <?= $data['liberado']['ELETIVA'] == '1' ? 'DESATIVAR' : 'ATIVAR' ?>
+                    </button>
+
+                    <button type="button" id="button-tutoria" class="btn-status">
+                        <i class="fas fa-user-tie"></i> TUTORIA
+                        <?= $data['liberado']['TUTORIA'] == '1' ? 'DESATIVAR' : 'ATIVAR' ?>
+                    </button>
+                </div>
+
+                <div class="status-messages">
+                    <?php if ($data['liberado']['ELETIVA'] == '1'): ?>
+                    <p class="status-message liberado">
+                        <i class="fas fa-check-circle"></i> O sistema de ELETIVA está <span class="destacado">
+                            LIBERADO</span>.
+                    </p>
+                    <?php else: ?>
+                    <p class="status-message bloqueado">
+                        <i class="fas fa-times-circle"></i> O sistema de ELETIVA está <span class="destacado">
+                            BLOQUEADO</span>.
+                    </p>
+                    <?php endif; ?>
+
+                    <?php if ($data['liberado']['TUTORIA'] == '1'): ?>
+                    <p class="status-message liberado">
+                        <i class="fas fa-check-circle"></i> O sistema de TUTORIA está <span class="destacado">
+                            LIBERADO</span>.
+                    </p>
+                    <?php else: ?>
+                    <p class="status-message bloqueado">
+                        <i class="fas fa-times-circle"></i> O sistema de TUTORIA está <span class="destacado">
+                            BLOQUEADO</span>.
+                    </p>
+                    <?php endif; ?>
+                </div>
+            </div>
+
+            <div id="AddEletiva" class="content-section">
 
                 <div class="container form-container">
                     <div class="form-header">
@@ -85,6 +155,22 @@
                             <?php endforeach; ?>
                         </div>
 
+                        <div class="mb-4">
+                            <h5 class="form-section-title">Selecione o turno dessa eletiva:</h5>
+
+                            <div class="turmas-grid">
+                                <?php foreach ($data["turnos"] as $turno): ?>
+                                <div class="custom-checkbox">
+                                    <input required type="radio" name="turno" value="<?= $turno?>"
+                                        id="turno-eletiva-<?= $turno ?>" class="turma-checkbox-<?= $turno ?>">
+                                    <label for="turno-eletiva-<?= $turno ?>">
+                                        <i class="fas fa-check-circle"></i> <?= $turno ?>
+                                    </label>
+                                </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+
                         <div class="text-center">
                             <button type="submit" class="btn-submit">
                                 <i class="fas fa-paper-plane"></i> Inserir Eletiva
@@ -106,7 +192,7 @@
                     <div class="export-container">
                         <button onclick="exportToExcel()">Exportar para Excel</button>
                     </div>
-                    <table id="EscolhasEletivas" class="table">
+                    <table id="EscolhasEletivas" class="tabela">
                         <thead>
                             <tr>
                                 <th>RA</th>
@@ -125,23 +211,44 @@
             </div>
 
             <div id="Eletivas" class="content-section">
-            <div class="search-container">
-                        <input type="text" id="searchNomeEletiva" placeholder="Buscar por nome">
-                        <input type="text" id="searchTurnoEletiva" placeholder="Buscar por Turno">
-                    </div>
-                    <table id="EscolhasEletivas" class="table">
-                        <thead>
-                            <tr>
-                                <th>NOME</th>
-                                <th>TURNO</th>
-                                <th>VAGAS</th>
-                                <th>EXCLUIR</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
+                <div class="aviso">
+                    <i class="fas fa-exclamation-circle icon"></i>
+                    <p><span class="destacado">Atenção:</strong> Se você excluir uma eletiva, todos os alunos que a
+                            escolheram também
+                            serão apagados.</p>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="searchNomeEletiva" placeholder="Buscar por nome">
+                    <input type="text" id="searchTurnoEletiva" placeholder="Buscar por Turno">
+                </div>
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>NOME</th>
+                            <th>PROFESSORES</th>
+                            <th>TURNO</th>
+                            <th>VAGAS</th>
+                            <th>EXCLUIR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($data["eletivas"] as $eletiva){?>
+                        <tr>
+                            <td><?= $eletiva["nome_eletiva"]?></td>
+                            <td>
+                                <?php foreach(explode(";",$eletiva["nome_professores"]) as $professor){ ?>
+                                <span><?= $professor?></span> <br>
+                                <?php } ?>
+                            </td>
+                            <td><?= $eletiva["turno"]?></td>
+                            <td id="Eletiva-vagas-<?= $eletiva["id"]?>"><?= $eletiva["vagas"]?></td>
+                            <td><button
+                                    onclick="PopUpExcluirEletiva('<?= $eletiva['id'] ?>','<?= $eletiva['nome_eletiva'] ?>')"
+                                    class="delete-btn"><i class="fas fa-trash-alt"></i></button></td>
+                        </tr>
+                        <?php }?>
+                    </tbody>
+                </table>
             </div>
         </div>
 
@@ -153,7 +260,7 @@
     <div class='conteudo-popup'>
 
         <div class="check">
-            <img src="public/assets/images/cancel.png" alt="">
+            <img src="../public/assets/images/cancel.png" alt="">
         </div>
         <h2>ERRO!</h2>
 
@@ -196,7 +303,7 @@
         <h2>EXCLUIR!</h2>
 
         <p>Tem Certeza que deseja excluir o aluno <span class="destacado" id="NomeAlunoEscolhaEletiva"></span> da
-            eletiva "<span id="NomeEscolhaEletiva"></span>" ?</p>
+            eletiva "<span id="NomeEscolhaEletiva"></span>" ? Se sim, irá aumentar uma vaga na eletiva!</p>
         <div class="botoes">
             <button onclick="Fechar_PopUp('EletivaEscolher')">FECHAR</button>
             <a id="AncoraExcluirEscolha" href="">EXCLUIR</a>
@@ -220,3 +327,72 @@
     </div>
 </div>
 <?php unset($_SESSION["ExcluirEscolha"]); }?>
+
+<?php if(isset($_SESSION["ExcluirEletiva"])) {?>
+
+<div id='ExcluirEletiva' class='PopUp-sobreposicao show'>
+    <div class='conteudo-popup'>
+
+        <div class="check">
+            <img src="../public/assets/images/check.png" alt="">
+        </div>
+        <h2>SUCESSO!</h2>
+
+        <p>A eletiva <span class="destacado"><?= $_SESSION["ExcluirEletiva"]?></span> foi excluída com sucesso! </p>
+        <button onclick="Fechar_PopUp('ExcluirEletiva')" class='Fechar-Popup'>FECHAR</button>
+    </div>
+</div>
+<?php unset($_SESSION["ExcluirEletiva"]); }?>
+
+
+<div id='EletivaExcluir' class='PopUp-sobreposicao hide'>
+    <div class='conteudo-popup'>
+
+        <div class="check">
+            <img src="../public/assets/images/duvida.png" alt="">
+        </div>
+        <h2><span id="nome-eletiva-excluir-popup">X</span></h2>
+
+        <p>Tem Certeza que deseja excluir essa eletiva?</p>
+        <div class="botoes">
+            <button onclick="Fechar_PopUp('EletivaExcluir')">FECHAR</button>
+            <a id="AncoraExcluirEletiva" href="">EXCLUIR</a>
+        </div>
+    </div>
+</div>
+
+
+<div id='StatusAlterar' class='PopUp-sobreposicao hide'>
+    <div class='conteudo-popup'>
+
+        <div class="check">
+            <img src="../public/assets/images/duvida.png" alt="">
+        </div>
+        <h2>STATUS</h2>
+
+        <p>Tem Certeza que deseja <span class="destacado" id="ValorStatus"></span> o sistema de <span
+                id="NomeStatus"></span>?</p>
+        <div class="botoes">
+            <button onclick="Fechar_PopUp('StatusAlterar')">FECHAR</button>
+            <a id="AncoraAlterarStatus" href="">ALTERAR</a>
+        </div>
+    </div>
+</div>
+
+
+<?php if(isset($_SESSION["StatusAlterado"])) {?>
+
+<div id='StatusAlterado' class='PopUp-sobreposicao show'>
+    <div class='conteudo-popup'>
+
+        <div class="check">
+            <img src="../public/assets/images/check.png" alt="">
+        </div>
+        <h2>SUCESSO!</h2>
+
+        <p>O sistema de <span class="destacado"><?= $_SESSION["StatusAlterado"]["nome"]?></span> foi
+            <?= $_SESSION["StatusAlterado"]["status"]?> com sucesso! </p>
+        <button onclick="Fechar_PopUp('StatusAlterado')" class='Fechar-Popup'>FECHAR</button>
+    </div>
+</div>
+<?php unset($_SESSION["StatusAlterado"]); }?>

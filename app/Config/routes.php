@@ -8,8 +8,10 @@ use App\Controller\home\HomeController;
 use App\Controller\login\EncerrarController;
 use App\Controller\Gestor\GestorController;
 use App\Controller\Gestor\GestorEletivaAdicionarController;
+use App\Controller\Gestor\GestorExcluirEletivaController;
 use App\Controller\Gestor\GestorExcluirEscolhaController;
 use App\Controller\Gestor\GestorHomeController;
+use App\Controller\Gestor\GestorStatusController;
 use App\Controller\login\LoginAutenticar;
 use App\Controller\login\LoginController;
 
@@ -26,7 +28,9 @@ $router = [
         'eletivas'                  => EletivasController::class,
         'eletiva/escolher'          => EletivaEscolherController::class,
         'gestor/eletiva/adicionar'  => GestorEletivaAdicionarController::class,
-        'gestor/excluir/escolha'    => GestorExcluirEscolhaController::class
+        'gestor/excluir/escolha'    => GestorExcluirEscolhaController::class,
+        'gestor/eletiva/excluir'    => GestorExcluirEletivaController::class,
+        'gestor/status'             => GestorStatusController::class
     ],
     'default'               => NotFoundController::class
 ];

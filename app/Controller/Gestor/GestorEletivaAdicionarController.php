@@ -22,8 +22,9 @@ class GestorEletivaAdicionarController extends AbstractController
             $dados = [
                 "nome_eletiva"      => $requestData["nome"],
                 "nome_professores"  => implode(";",$professores),
-                "vagas"             => $requestData["vagas"],
-                "turmas"            => implode(";",$requestData["turmas"])
+                "turmas"            => implode(";",$requestData["turmas"]),
+                "turno"             => $requestData["turno"],
+                "vagas"             => $requestData["vagas"]
             ];
 
             $query = new Eletiva();

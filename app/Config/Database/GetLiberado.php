@@ -11,13 +11,10 @@ $dotenv->load();
 
 use App\Config\Database\Query;
 
-$sql = "SELECT * FROM eletivas";
-
 $query = new Query();
 
-$dados = $query->select("eletivas");
+$dados = $query->select("liberado");
 
 echo json_encode($dados);
 
 die();
-

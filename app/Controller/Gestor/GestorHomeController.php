@@ -21,12 +21,22 @@ class GestorHomeController extends AbstractController
             }
 
             $query = new Eletiva();
-            $escolhas = $query->escolhasEletivas();    
+            $escolhas = $query->escolhasEletivas();
+            $eletivas = $query->eletivas();
+            $liberado = $query->liberado();
+
+            $status = [];
+            foreach ($liberado as $eletiva) {
+                $status[$eletiva['nome']] = $eletiva['status'];
+            }
 
             $dados = [
                 "turmasPorTurno" => $turmasPorTurno,
                 "SCRIPT"         => "gestor.js",
-                "escolhas"         => $escolhas
+                "liberado"  => $status,
+                "escolhas"       => $escolhas,
+                "eletivas"       => $eletivas,
+                "turnos"         => explode(",",$_ENV["TURNOS"])
             ];
 
             $this->render(viewName: 'gestor/home', caminhos: 2, data: $dados,title: "Gestor");

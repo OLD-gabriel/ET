@@ -9,6 +9,7 @@ CREATE TABLE eletivas(
     nome_eletiva VARCHAR(255) NOT NULL,
     nome_professores VARCHAR(255) NOT NULL,
     turmas TEXT NOT NULL,
+    turno VARCHAR(255) NOT NULL,
     vagas INT NOT NULL
 ) 
 
@@ -18,6 +19,7 @@ COLLATE utf8_general_ci;
 CREATE TABLE tutoria(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nome_professor VARCHAR(255) NOT NULL,
+    turno VARCHAR(255) NOT NULL,
     vagas INT NOT NULL
 )
 CHARACTER SET utf8 

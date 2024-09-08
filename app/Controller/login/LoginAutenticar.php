@@ -22,6 +22,9 @@ class LoginAutenticar extends AbstractController
                 $_SESSION['NOME'] = $aluno['nome'];
                 $_SESSION['TURMA'] = $aluno['turma'];
                 $_SESSION['TURNO'] = $aluno['turno'];
+
+                
+
                 $this->redirect('/home');
             }
         }

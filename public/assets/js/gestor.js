@@ -77,3 +77,24 @@ function exportToExcel() {
     const workbook = XLSX.utils.table_to_book(table, { sheet: 'Escolhas Eletivas' });
     XLSX.writeFile(workbook, 'Escolhas_Eletivas.xlsx');
 }
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    function atualizarVagas() {
+        fetch('../app/Config/Database/GetEletivas.php')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(eletiva => {
+                    const spanVagas = document.getElementById(`Eletiva-vagas-${eletiva.id}`);
+
+                    if (spanVagas) {
+                        spanVagas.textContent = `${eletiva.vagas}`;
+                    }
+                });
+            })
+    }
+
+        atualizarVagas();
+        setInterval(atualizarVagas, 500);
+});

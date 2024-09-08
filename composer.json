@@ -1,5 +1,5 @@
 {
-    "name": "mscode/projeto-estoque",
+    "name": "eletiva-tutoria/sistema-escolhas",
     "require-dev": {
         "symfony/var-dumper": "*"
     },

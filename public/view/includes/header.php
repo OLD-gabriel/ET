@@ -8,10 +8,10 @@
     <?php if($caminhos == 1){ ?>
     <link rel="shortcut icon" href="public/assets/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="public/assets/css/style.css">
-        <?php }else{ ?>
+    <?php }else{ ?>
     <link rel="shortcut icon" href="../public/assets/images/favicon.ico" type="image/x-icon">
-            <link rel="stylesheet" href="../public/assets/css/style.css">
-        <?php } ?>
+    <link rel="stylesheet" href="../public/assets/css/style.css">
+    <?php } ?>
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,16 +38,20 @@
 
     <div class="user">
 
+        <?php if($_SESSION["LOGIN"]){?>
         <a data-bs-toggle="offcanvas" href="#offcanvasRight" role="button" aria-controls="offcanvasRight">
             <i class="far fa-user"></i>
         </a>
+        <?php }?>
+
     </div>
 </header>
 
 <div class="boton-header"></div>
 
 
-<div class="offcanvas offcanvas-end custom-offcanvas" style="width: 250px;"  tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+<div class="offcanvas offcanvas-end custom-offcanvas" style="width: 250px;" tabindex="-1" id="offcanvasRight"
+    aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header bg-dark text-white">
         <h5 id="offcanvasRightLabel" class="mb-0 align-items-center">Painel de Usuário</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -56,8 +60,8 @@
         <div class="user-info mb-4">
             <div class="info-item d-flex align-items-center mb-3">
                 <div class="icon-menu-offcanvas">
-                <i class="fas fa-user "></i>
-                    
+                    <i class="fas fa-user "></i>
+
                 </div>
                 <div>
                     <h6 class="mb-0">Nome:</h6>
@@ -66,30 +70,30 @@
             </div>
 
             <div class="info-item d-flex align-items-center mb-3">
-            <div class="icon-menu-offcanvas">
-                <i class="fas fa-id-badge "></i>
-                    
-                    </div>
+                <div class="icon-menu-offcanvas">
+                    <i class="fas fa-id-badge "></i>
+
+                </div>
                 <div>
                     <h6 class="mb-0">RA:</h6>
                     <p class="text-muted mb-0"><?= $_SESSION['RA']; ?></p>
                 </div>
             </div>
             <div class="info-item d-flex align-items-center mb-3">
-            <div class="icon-menu-offcanvas">
-                <i class="fas fa-school "></i>
-                    
-                    </div>
+                <div class="icon-menu-offcanvas">
+                    <i class="fas fa-school "></i>
+
+                </div>
                 <div>
                     <h6 class="mb-0">Turma:</h6>
                     <p class="text-muted mb-0"><?= $_SESSION['TURMA']; ?></p>
                 </div>
             </div>
             <div class="info-item d-flex align-items-center mb-3">
-            <div class="icon-menu-offcanvas">
-                <i class="fas fa-clock "></i>
-                    
-                    </div>
+                <div class="icon-menu-offcanvas">
+                    <i class="fas fa-clock "></i>
+
+                </div>
                 <div>
                     <h6 class="mb-0">Turno:</h6>
                     <p class="text-muted mb-0"><?= $_SESSION['TURNO']; ?></p>

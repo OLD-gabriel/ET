@@ -16,6 +16,9 @@ class GestorExcluirEscolhaController extends AbstractController
             $Escolha = $query->pesquisarAlunoEletivaID($id);
             $excluir = $query->excluirEscolha($id);
 
+            $vagas = ($query->PegarEletiva($Escolha["id_eletiva"]))["vagas"] + 1;
+            $update = $query->diminuirVagas($Escolha["id_eletiva"],$vagas);
+            
             if($excluir){
                 $_SESSION["ExcluirEscolha"] = [
                     "NomeAluno" => $Escolha["nome_aluno"],
