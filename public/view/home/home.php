@@ -27,6 +27,15 @@
 
         </div>
     </div>
+
+    <div class="home-et">
+    <h2 class="titulo-info">Dicas Úteis</h2>
+    <p class="info-text">
+        <i class="fas fa-lightbulb"></i> Para garantir sua vaga nas eletivas, escolha rapidamente assim que o status for liberado. <br>
+        <i class="fas fa-headset"></i> Em caso de dificuldades, entre em contato com o Vânia Alves ou Alex Menezes.
+    </p>
+</div>
+
 </main>
 
 <?php if(isset($data["SCRIPT"])){ ?>

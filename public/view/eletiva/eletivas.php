@@ -139,3 +139,20 @@ unset($_SESSION["NomeEletivaEscolhida"]);
 <?php if(isset($data["SCRIPT"])){ ?>
 <script src="public/assets/js/<?=$data["SCRIPT"]?>"></script>
 <?php } ?>
+
+<?php if(isset($_SESSION["VagasEsgotadas"])) {?>
+
+<div id='VagasEsgotadas' class='PopUp-sobreposicao show'>
+    <div class='conteudo-popup'>
+
+        <div class="check">
+            <img src="public/assets/images/cancel.png" alt="">
+        </div>
+        <h2>VAGAS ESGOTADAS!</h2>
+
+        <p>As vagas da eletiva <span class="destacado"><?= $_SESSION["VagasEsgotadas"]?></span> foram esgotadas. </p>
+        <button onclick="Fechar_PopUp('VagasEsgotadas')" class='Fechar-Popup'>FECHAR</button>
+    </div>
+</div>
+
+<?php unset($_SESSION["VagasEsgotadas"]); }?>

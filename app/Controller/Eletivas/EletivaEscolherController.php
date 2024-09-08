@@ -29,38 +29,41 @@ class EletivaEscolherController extends AbstractController
                 $liberado = $query->liberado();
 
                 $status = [];
-                foreach ($liberado as $eletiva) {
-                    $status[$eletiva['nome']] = $eletiva['status'];
+                foreach ($liberado as $liberadoNome) {
+                    $status[$liberadoNome['nome']] = $liberadoNome['status'];
                 }
                 
                 if($status["ELETIVA"] == "1"){
-                    $inserir = $query->InserirAlunoEletiva($dados);
 
-                if($inserir){
-                    $vagas = $eletiva["vagas"] - 1;
-                    $diminuir = $query->diminuirVagas($eletiva["id"],$vagas);
-                    if($diminuir){
-                        $_SESSION["EletivaEscolhida"] = TRUE;
-                        $_SESSION["NomeEletivaEscolhida"] = $eletiva["nome_eletiva"];
-                        $this->redirect("eletivas");
+                    if($eletiva["vagas"] > 0){
+                        $inserir = $query->InserirAlunoEletiva($dados);
+                        if($inserir){
+                            $vagas = $eletiva["vagas"] - 1;
+                            $diminuir = $query->diminuirVagas($eletiva["id"],$vagas);
+                            if($diminuir){
+                                $_SESSION["EletivaEscolhida"] = TRUE;
+                                $_SESSION["NomeEletivaEscolhida"] = $eletiva["nome_eletiva"];
+                                $this->redirect("eletivas");
+                            }else{
+                                $_SESSION["ERRO"] = True;
+                                $this->redirect("eletivas");
+                            }
+                        }else{
+                            $_SESSION["ERRO"] = True;
+                            $this->redirect("eletivas");
+                        }
                     }else{
-                        $_SESSION["ERRO"] = True;
+                        $_SESSION["VagasEsgotadas"] = $eletiva["nome_eletiva"];
                         $this->redirect("eletivas");
                     }
-                }else{
-                    $_SESSION["ERRO"] = True;
-                    $this->redirect("eletivas");
-                }
                 }else{
                     $_SESSION["EletivaDesativada"] = True;
                     $this->redirect("/home");
                 }
-                
             }else{
                 $_SESSION["EletivaJaEscolhida"] = True;
                 $this->redirect("eletivas");  
             }
-
         }else{
             $this->redirect("/login");
         }
