@@ -1,6 +1,13 @@
 <main class="main min-vh-100">
+
     <div class="home-et detalhes-info-eletiva">
         <h2 class="titulo-et"> ELETIVAS - ESCOLA NSL </h2>
+        <center>
+        <span style="margin-bottom:5px;" >
+            <i style="margin-right:5px" class="fas fa-user"></i><strong><?= $_SESSION["NOME"] ?></strong>
+        </span>
+        </center>
+<br>
         <h1><i class="fas fa-hand-point-right"></i> Bem-vindo!</h1>
         <p>
             <i class="fas fa-book"></i> Escolha a sua <strong>eletiva</strong> sabiamente.
@@ -56,6 +63,13 @@
             <?php }?>
         </div>
     </div>
+    <div class="home-et dicas-finais">
+    <h2 class="titulo-dicas">Dicas Úteis</h2>
+    <p>
+        <i class="fas fa-hourglass-half"></i> As vagas nas eletivas são limitadas, então não demore muito para fazer sua escolha! <br>
+        <i class="fas fa-hands-helping"></i> Se precisar de ajuda,  entre em contato com o Vânia Alves ou Alex Menezes.
+    </p>
+</div>
 </main>
 
 <div id='EletivaEscolher' class='PopUp-sobreposicao hide'>
@@ -129,7 +143,7 @@ unset($_SESSION["NomeEletivaEscolhida"]);
         </div>
         <h2>ERRO!</h2>
 
-        <p>Você ja escolheu a eletiva "<?= $data["escolha"][0]["nome_eletiva"]?>" . </p>
+        <p>Você ja escolheu a eletiva <span class="destacado"><?= $data["escolha"][0]["nome_eletiva"]?></span>. </p>
         <button onclick="Fechar_PopUp('EletivaJaEscolhida')" class='Fechar-Popup'>FECHAR</button>
     </div>
 </div>

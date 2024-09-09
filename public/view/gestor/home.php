@@ -208,6 +208,7 @@
                                 <th>RA</th>
                                 <th>ALUNO</th>
                                 <th>TURNO</th>
+                                <th>TURMA</th>
                                 <th>ELETIVA</th>
                                 <th>EXCLUIR</th>
                             </tr>

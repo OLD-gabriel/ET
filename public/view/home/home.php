@@ -1,10 +1,19 @@
 <main class="main min-vh-100">
+
     <div class="home-et">
-    <p class="welcome-text">
+        <center>
+        <span style="margin-bottom:5px;" >
+            <i style="margin-right:5px" class="fas fa-user"></i><strong><?= $_SESSION["NOME"] ?></strong>
+        </span>
+        </center>
+
+        <p class="welcome-text">
             <i class="fas fa-handshake"></i>
-            Bem-vindo(a) ao sistema de escolha de Eletivas e Tutorias da Escola NSL. Aqui você poderá visualizar as opções
+            Bem-vindo(a) ao sistema de escolha de Eletivas e Tutorias da Escola NSL. Aqui você poderá visualizar as
+            opções
             disponíveis e fazer sua escolha de maneira prática e rápida. <br>
-            <i class="fas fa-info-circle"></i> Fique atento ao status das opções abaixo para saber se estão liberadas para seleção.
+            <i class="fas fa-info-circle"></i> Fique atento ao status das opções abaixo para saber se estão liberadas
+            para seleção.
         </p>
     </div>
     <div class="home-et">
@@ -29,12 +38,13 @@
     </div>
 
     <div class="home-et">
-    <h2 class="titulo-info">Dicas Úteis</h2>
-    <p class="info-text">
-        <i class="fas fa-lightbulb"></i> Para garantir sua vaga nas eletivas, escolha rapidamente assim que o status for liberado. <br>
-        <i class="fas fa-headset"></i> Em caso de dificuldades, entre em contato com o Vânia Alves ou Alex Menezes.
-    </p>
-</div>
+        <h2 class="titulo-info">Dicas Úteis</h2>
+        <p class="info-text">
+            <i class="fas fa-lightbulb"></i> Para garantir sua vaga nas eletivas, escolha rapidamente assim que o status
+            for liberado. <br>
+            <i class="fas fa-headset"></i> Em caso de dificuldades, entre em contato com o Vânia Alves ou Alex Menezes.
+        </p>
+    </div>
 
 </main>
 

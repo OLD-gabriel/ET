@@ -39,6 +39,7 @@ function updateTable(data) {
             <td>${item.ra_aluno}</td>
             <td>${item.nome_aluno}</td>
             <td>${item.turno_aluno}</td>
+            <td>${item.turma_aluno}</td>
             <td>${item.nome_eletiva}</td>
             <td><button class="delete-btn" onclick="PopUpExcluirEscolha('${item.id}', '${encodeURIComponent(item.nome_aluno)}', '${encodeURIComponent(item.nome_eletiva)}')"><i class="fas fa-trash-alt"></i></button></td>
         `;

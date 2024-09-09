@@ -22,3 +22,9 @@ body {
 .hide{
   display: none;
 }
+
+footer a{
+  font-weight: bold;
+  color: white;
+  margin-left: 5px;
+}

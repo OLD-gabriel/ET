@@ -119,3 +119,18 @@
   width: 50px;
   text-align: center;
 }
+
+.area-tecnico{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.area-tecnico img{
+  width: 30px;
+}
+
+.area-tecnico span{
+  font-weight: bold;
+}

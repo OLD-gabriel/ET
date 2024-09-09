@@ -54,72 +54,80 @@
         <h5 id="offcanvasRightLabel" class="mb-0 align-items-center">Painel de Usuário</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
+
     <div class="offcanvas-body p-3 bg-light d-flex flex-column">
         <div class="user-info mb-4">
             <?php if($gestor != True){ ?>
-            <div class="info-item d-flex align-items-center mb-3">
-
-                <div class="icon-menu-offcanvas">
-                    <i class="fas fa-user "></i>
-
+            
+            <!-- Seção de Nome do Usuário -->
+            <div class="info-item d-flex align-items-center mb-4">
+                <div class="icon-menu-offcanvas me-2">
+                    <i class="fas fa-user-circle fa-2x text-primary"></i>
                 </div>
-
                 <div>
-                    <h6 class="mb-0">Nome:</h6>
+                    <h6 class="mb-0 text-primary">Nome:</h6>
                     <p class="text-muted mb-0"><?= $_SESSION["NOME"]; ?></p>
                 </div>
             </div>
 
-            <div class="info-item d-flex align-items-center mb-3">
-                <div class="icon-menu-offcanvas">
-                    <i class="fas fa-id-badge "></i>
-
+            <!-- Seção de RA do Usuário -->
+            <div class="info-item d-flex align-items-center mb-4">
+                <div class="icon-menu-offcanvas me-2">
+                    <i class="fas fa-id-badge fa-2x text-secondary"></i>
                 </div>
                 <div>
-                    <h6 class="mb-0">RA:</h6>
+                    <h6 class="mb-0 text-secondary">RA:</h6>
                     <p class="text-muted mb-0"><?= $_SESSION['RA']; ?></p>
                 </div>
             </div>
-            <div class="info-item d-flex align-items-center mb-3">
-                <div class="icon-menu-offcanvas">
-                    <i class="fas fa-school "></i>
 
+            <!-- Seção de Turma -->
+            <div class="info-item d-flex align-items-center mb-4">
+                <div class="icon-menu-offcanvas me-2">
+                    <i class="fas fa-school fa-2x text-success"></i>
                 </div>
                 <div>
-                    <h6 class="mb-0">Turma:</h6>
+                    <h6 class="mb-0 text-success">Turma:</h6>
                     <p class="text-muted mb-0"><?= $_SESSION['TURMA']; ?></p>
                 </div>
             </div>
-            <div class="info-item d-flex align-items-center mb-3">
-                <div class="icon-menu-offcanvas">
-                    <i class="fas fa-clock "></i>
 
+            <!-- Seção de Turno -->
+            <div class="info-item d-flex align-items-center mb-4">
+                <div class="icon-menu-offcanvas me-2">
+                    <i class="fas fa-clock fa-2x text-warning"></i>
                 </div>
                 <div>
-                    <h6 class="mb-0">Turno:</h6>
+                    <h6 class="mb-0 text-warning">Turno:</h6>
                     <p class="text-muted mb-0"><?= $_SESSION['TURNO']; ?></p>
                 </div>
             </div>
-            <?php }else{ ?>
-            <div class="info-item d-flex align-items-center mb-3">
-                <div class="icon-menu-offcanvas">
-                    <i class="fas fa-crown"></i>
+            
+            <?php } else { ?>
+            
+            <!-- Seção de Gestor -->
+            <div class="info-item d-flex align-items-center mb-4">
+                <div class="icon-menu-offcanvas me-2">
+                    <i class="fas fa-crown fa-2x text-danger"></i>
                 </div>
                 <div>
-                    <h6 class="mb-0">Gestor:</h6>
+                    <h6 class="mb-0 text-danger">Gestor:</h6>
                     <p class="text-muted mb-0">Você está logado como gestor. Aqui você pode gerenciar e supervisionar as
                         eletivas e tutoria da escola.</p>
                 </div>
             </div>
-             
+
             <?php } ?>
-
-
         </div>
 
+        <!-- Botão de Sair -->
         <div class="mt-auto">
-            <a href="sair" class="btn btn-danger w-100">
-                <i class="fas fa-sign-out-alt me-2"></i> Sair
+            <div class="area-tecnico" >
+                <img src="public/assets/images/tecnico.png" alt="">
+                <span>#ÉOTECNICOO 😜</span>
+            </div>
+            <a href="sair" class="btn btn-danger w-100 d-flex align-items-center justify-content-center">
+                <i class="fas fa-sign-out-alt me-2"></i> <span>Sair</span>
             </a>
         </div>
     </div>
